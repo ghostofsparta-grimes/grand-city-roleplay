@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
   <title>Grand City Roleplay</title>
@@ -65,13 +65,13 @@
     <h3>Server Status</h3>
 
     <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
-      <span id="server-status-dot"
+      <span id="status-dot"
         style="width:10px;height:10px;border-radius:50%;background:#999;">
       </span>
-      <span id="server-status-text">Checking server...</span>
+      <span id="status-text">Checking server...</span>
     </div>
 
-    <p id="server-players" style="margin-top:8px;opacity:0.8;">
+    <p id="players-text" style="margin-top:8px;opacity:0.8;">
       Players: -- / --
     </p>
   </div>
@@ -79,23 +79,17 @@
 </div>
 
 <script>
-  const SERVER_IP = "51.81.59.76";
-  const SERVER_PORT = "22365";
-
-  const API_URL =
-    "https://api.allorigins.win/raw?url=" +
-    encodeURIComponent(
-      `https://api.samp-servers.net/v2/server/${SERVER_IP}:${SERVER_PORT}`
-    );
+  const SERVER = "51.81.59.76:22365";
+  const API_URL = `https://samp-servers.net/api/?address=${SERVER}&format=json`;
 
   fetch(API_URL)
     .then(res => res.json())
     .then(data => {
-      const dot = document.getElementById("server-status-dot");
-      const text = document.getElementById("server-status-text");
-      const players = document.getElementById("server-players");
+      const dot = document.getElementById("status-dot");
+      const text = document.getElementById("status-text");
+      const players = document.getElementById("players-text");
 
-      if (data.online) {
+      if (data.online === "1") {
         dot.style.background = "#22c55e";
         text.textContent = "Server Online";
         players.textContent = `Players: ${data.players} / ${data.maxplayers}`;
@@ -106,7 +100,7 @@
       }
     })
     .catch(() => {
-      document.getElementById("server-status-text").textContent =
+      document.getElementById("status-text").textContent =
         "Status unavailable";
     });
 </script>
