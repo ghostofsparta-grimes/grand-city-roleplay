@@ -1,102 +1,109 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Grand City Roleplay</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #0b1220, #060a14);
+    color: white;
+    overflow-x: hidden;
+  }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #0b1220, #060a14);
-      color: white;
-      overflow-x: hidden;
-    }
+  /* Header */
+  .header {
+    height: 56px;
+    background: #0d47ff;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index: 1001;
+    position: relative;
+  }
 
-    /* Header */
-    .header {
-      height: 55px;
-      background: #0d47ff;
-      display: flex;
-      align-items: center;
-      padding: 0 15px;
-    }
+  .menu-btn {
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 12px;
+  }
 
-    .menu-btn {
-      font-size: 26px;
-      cursor: pointer;
-      margin-right: 15px;
-    }
+  .title {
+    font-size: 17px;
+    font-weight: bold;
+  }
 
-    .title {
-      font-size: 18px;
-      font-weight: bold;
-    }
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -220px;
+    width: 220px;
+    height: 100%;
+    background: linear-gradient(180deg, #08102a, #060b1c);
+    padding-top: 60px;
+    transition: 0.25s ease;
+    z-index: 1000;
+  }
 
-    /* Sidebar */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -260px;
-      width: 260px;
-      height: 100%;
-      background: #08102a;
-      padding-top: 60px;
-      transition: 0.3s;
-      z-index: 1000;
-    }
+  .sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    color: #9bb2ff;
+    text-decoration: none;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
 
-    .sidebar a {
-      display: block;
-      padding: 15px 20px;
-      color: #9bb2ff;
-      text-decoration: none;
-      font-size: 16px;
-      border-bottom: 1px solid #111a3a;
-    }
+  .sidebar a:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
+  }
 
-    .sidebar a:hover {
-      background: #111a3a;
-      color: white;
-    }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    z-index: 999;
+  }
 
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      z-index: 999;
-    }
+  /* Content */
+  .content {
+    padding: 16px;
+  }
 
-    /* Content */
-    .content {
-      padding: 20px;
-    }
+  .card {
+    background: linear-gradient(180deg, #111a3a, #0d1430);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  }
 
-    .card {
-      background: #111a3a;
-      border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
+  .card h2,
+  .card h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
 
-    .card h2 {
-      margin-top: 0;
-    }
+  .card p {
+    margin: 0;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
 
-    /* Open states */
-    .sidebar.open {
-      left: 0;
-    }
+  /* Open states */
+  .sidebar.open {
+    left: 0;
+  }
 
-    .overlay.show {
-      display: block;
-    }
-  </style>
+  .overlay.show {
+    display: block;
+  }
+</style>
 </head>
 
 <body>
