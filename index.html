@@ -78,5 +78,31 @@
 
 </div>
 
+<script>
+  const SERVER_IP = "51.81.59.76";
+  const SERVER_PORT = "22365";
+
+  fetch(`https://api.samp-servers.net/v2/server/${SERVER_IP}:${SERVER_PORT}`)
+    .then(res => res.json())
+    .then(data => {
+      const dot = document.getElementById("server-status-dot");
+      const text = document.getElementById("server-status-text");
+      const players = document.getElementById("server-players");
+
+      if (data.online) {
+        dot.style.background = "#22c55e";
+        text.textContent = "Server Online";
+        players.textContent = `Players: ${data.players} / ${data.maxplayers}`;
+      } else {
+        dot.style.background = "#ef4444";
+        text.textContent = "Server Offline";
+        players.textContent = "Players: 0 / 0";
+      }
+    })
+    .catch(() => {
+      document.getElementById("server-status-text").textContent = "Status unavailable";
+    });
+</script>
+
 </body>
 </html>
