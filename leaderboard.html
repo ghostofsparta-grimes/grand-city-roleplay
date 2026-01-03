@@ -11,7 +11,6 @@
     font-family: Arial, sans-serif;
     background: linear-gradient(180deg, #0b1220, #050814);
     color: white;
-    overflow-x: hidden;
   }
 
   /* HEADER */
@@ -26,7 +25,6 @@
     left: 0;
     right: 0;
     z-index: 1001;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   }
 
   .menu-btn {
@@ -44,8 +42,8 @@
   .sidebar {
     position: fixed;
     top: 0;
-    left: -230px;
-    width: 230px;
+    left: -240px;
+    width: 240px;
     height: 100%;
     background: linear-gradient(180deg, #08102a, #050b1c);
     padding-top: 70px;
@@ -82,36 +80,41 @@
 
   /* CONTENT */
   .content {
-    padding: 76px 16px 20px;
+    padding: 76px 14px 20px;
   }
 
   .card {
     background: linear-gradient(180deg, #121c3f, #0d1430);
     border-radius: 14px;
-    padding: 18px;
-    margin-bottom: 16px;
+    padding: 16px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.35);
   }
 
   h2 {
-    margin: 0 0 12px;
+    margin: 0 0 14px;
   }
 
-  /* LEADERBOARD */
+  /* TABLE */
+  .table-header,
   .row {
     display: grid;
-    grid-template-columns: 36px 1fr 60px 60px;
-    gap: 8px;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    grid-template-columns: 36px 1fr 70px 70px;
+    gap: 6px;
     align-items: center;
     font-size: 14px;
   }
 
-  .row.header {
+  .table-header {
     color: #9bb2ff;
     font-weight: bold;
+    padding-bottom: 10px;
     border-bottom: 1px solid rgba(255,255,255,0.15);
+    margin-bottom: 6px;
+  }
+
+  .row {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
 
   .rank {
@@ -125,7 +128,8 @@
     text-overflow: ellipsis;
   }
 
-  .level, .hours {
+  .level,
+  .hours {
     text-align: right;
   }
 
@@ -157,11 +161,10 @@
 
 <!-- CONTENT -->
 <div class="content">
-
   <div class="card">
-    <h2>Top Players</h2>
+    <h2>Top 25 Players</h2>
 
-    <div class="row header">
+    <div class="table-header">
       <div>#</div>
       <div>Username</div>
       <div class="level">Lvl</div>
@@ -172,7 +175,6 @@
       <div class="loading">Loading leaderboard…</div>
     </div>
   </div>
-
 </div>
 
 <script>
@@ -184,8 +186,8 @@
   fetch("https://gcrp-backend.onrender.com/api/leaderboard")
     .then(res => res.json())
     .then(data => {
-      const container = document.getElementById("leaderboard");
-      container.innerHTML = "";
+      const list = document.getElementById("leaderboard");
+      list.innerHTML = "";
 
       data.forEach((p, i) => {
         const row = document.createElement("div");
@@ -196,7 +198,7 @@
           <div class="level">${p.level}</div>
           <div class="hours">${p.hours}</div>
         `;
-        container.appendChild(row);
+        list.appendChild(row);
       });
     })
     .catch(() => {
@@ -206,4 +208,4 @@
 </script>
 
 </body>
-      </html>
+        </html>
