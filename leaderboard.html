@@ -66,7 +66,7 @@
   <div class="card">
     <h2>Top Players</h2>
 
-    <table>
+    <table id="leaderboard">
       <tr>
         <th>#</th>
         <th>Username</th>
@@ -82,5 +82,30 @@
   </div>
 </div>
 
+<script>
+fetch("https://gcrp-backend.onrender.com/api/leaderboard")
+  .then(response => response.json())
+  .then(data => {
+    const table = document.getElementById("leaderboard");
+    const loading = document.getElementById("loading");
+
+    loading.remove();
+
+    data.forEach((player, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${player.username}</td>
+        <td>${player.level}</td>
+        <td>${player.hours}</td>
+      `;
+      table.appendChild(row);
+    });
+  })
+  .catch(() => {
+    document.getElementById("loading").innerText = "Failed to load leaderboard";
+  });
+</script>
+
 </body>
-</html>
+      </html>
