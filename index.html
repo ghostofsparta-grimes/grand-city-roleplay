@@ -61,15 +61,28 @@
 
     <div class="card">
   <h3>Server Status</h3>
-  <p id="server-status">Connecting to server...</p>
+  <p id="server-status">Checking server...</p>
   <p id="server-players" style="opacity:0.8;"></p>
 </div>
 
 <script>
-  // This will be connected to the backend later
-  document.getElementById("server-status").innerText = "Server status system ready";
-</script>
-  </div>
+  const API_URL = "https://YOUR-API-URL-HERE/api/server/status";
 
+  fetch(API_URL)
+    .then(res => res.json())
+    .then(data => {
+      if (data.online) {
+        document.getElementById("server-status").innerText = "🟢 Server Online";
+        document.getElementById("server-players").innerText =
+          "Players: " + data.players + " / " + data.maxPlayers;
+      } else {
+        document.getElementById("server-status").innerText = "🔴 Server Offline";
+      }
+    })
+    .catch(() => {
+      document.getElementById("server-status").innerText =
+        "⚠️ Status unavailable";
+    });
+</script>
 </body>
   </html>
