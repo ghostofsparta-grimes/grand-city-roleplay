@@ -1,13 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grand City Roleplay</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
   body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(180deg, #0b1220, #060a14);
+    background: linear-gradient(180deg, #0b1220, #050814);
     color: white;
     overflow-x: hidden;
   }
 
-  /* Header */
+  /* HEADER */
   .header {
     height: 56px;
     background: #0d47ff;
@@ -15,8 +22,11 @@
     align-items: center;
     padding: 0 14px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 1001;
-    position: relative;
   }
 
   .menu-btn {
@@ -26,19 +36,19 @@
   }
 
   .title {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: bold;
   }
 
-  /* Sidebar */
+  /* SIDEBAR */
   .sidebar {
     position: fixed;
     top: 0;
-    left: -220px;
-    width: 220px;
+    left: -230px;
+    width: 230px;
     height: 100%;
-    background: linear-gradient(180deg, #08102a, #060b1c);
-    padding-top: 60px;
+    background: linear-gradient(180deg, #08102a, #050b1c);
+    padding-top: 70px;
     transition: 0.25s ease;
     z-index: 1000;
   }
@@ -55,10 +65,11 @@
   }
 
   .sidebar a:hover {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.06);
     color: white;
   }
 
+  /* OVERLAY */
   .overlay {
     position: fixed;
     top: 0;
@@ -70,23 +81,22 @@
     z-index: 999;
   }
 
-  /* Content */
+  /* CONTENT */
   .content {
-    padding: 16px;
+    padding: 76px 16px 20px;
   }
 
   .card {
-    background: linear-gradient(180deg, #111a3a, #0d1430);
+    background: linear-gradient(180deg, #121c3f, #0d1430);
     border-radius: 14px;
-    padding: 16px;
+    padding: 18px;
     margin-bottom: 16px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.35);
   }
 
   .card h2,
   .card h3 {
-    margin-top: 0;
-    margin-bottom: 8px;
+    margin: 0 0 8px;
   }
 
   .card p {
@@ -95,7 +105,7 @@
     opacity: 0.9;
   }
 
-  /* Open states */
+  /* OPEN STATES */
   .sidebar.open {
     left: 0;
   }
@@ -108,23 +118,24 @@
 
 <body>
 
-<!-- Sidebar -->
-<div id="sidebar" class="sidebar">
+<!-- HEADER -->
+<div class="header">
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <div class="title">Grand City Roleplay</div>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
   <a href="index.html">🏠 Home</a>
   <a href="players.html">👥 Online Players</a>
   <a href="leaderboard.html">🏆 Leaderboard</a>
   <a href="rules.html">📜 Rules</a>
 </div>
 
-<div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-<!-- Header -->
-<div class="header">
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
-  <div class="title">Grand City Roleplay</div>
-</div>
-
-<!-- Content -->
+<!-- CONTENT -->
 <div class="content">
 
   <div class="card">
@@ -138,8 +149,8 @@
   <div class="card">
     <h3>About the Server</h3>
     <p>
-      Grand City Roleplay is a serious roleplay server focused
-      on realism, progression, and long-term character development.
+      Grand City Roleplay is a serious roleplay server focused on
+      realism, progression, and long-term character development.
     </p>
   </div>
 
