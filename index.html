@@ -45,7 +45,7 @@
 </head>
 <body>
 
-  <header>Grand City Roleplay</header>
+<header>Grand City Roleplay</header>
 
 <nav>
   <a href="/index.html">Home</a>
@@ -53,36 +53,30 @@
   <a href="/leaderboard.html">Leaderboard</a>
   <a href="/rules.html">Rules</a>
 </nav>
-  <div class="container">
-    <div class="card">
-      <h2>Welcome to Grand City Roleplay</h2>
-      <p>Experience realistic roleplay in Grand City.</p>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Welcome to Grand City Roleplay</h2>
+    <p>Experience realistic roleplay in Grand City.</p>
+  </div>
+
+  <div class="card">
+    <h3>Server Status</h3>
+
+    <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
+      <span id="server-status-dot"
+        style="width:10px;height:10px;border-radius:50%;background:#999;">
+      </span>
+      <span id="server-status-text">Checking server...</span>
     </div>
 
-    <div class="card">
-  <h3>Server Status</h3>
-  <p id="server-status">Checking server...</p>
-  <p id="server-players" style="opacity:0.8;"></p>
+    <p id="server-players" style="margin-top:8px;opacity:0.8;">
+      Players: -- / --
+    </p>
+  </div>
+
 </div>
 
-<script>
-  const API_URL = "https://gcrp-backend.onrender.com/api/server/status";
-
-  fetch(API_URL)
-    .then(res => res.json())
-    .then(data => {
-      if (data.online) {
-        document.getElementById("server-status").innerText = "🟢 Server Online";
-        document.getElementById("server-players").innerText =
-          "Players: " + data.players + " / " + data.maxPlayers;
-      } else {
-        document.getElementById("server-status").innerText = "🔴 Server Offline";
-      }
-    })
-    .catch(() => {
-      document.getElementById("server-status").innerText =
-        "⚠️ Status unavailable";
-    });
-</script>
 </body>
-  </html>
+</html>
