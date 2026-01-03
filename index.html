@@ -60,9 +60,15 @@
     </div>
 
     <div class="card">
-      <h3>Server Status</h3>
-      <p>Loading server status...</p>
-    </div>
+  <h3>Server Status</h3>
+  <p id="server-status">Connecting to server...</p>
+  <p id="server-players" style="opacity:0.8;"></p>
+</div>
+
+<script>
+  // This will be connected to the backend later
+  document.getElementById("server-status").innerText = "Server status system ready";
+</script>
   </div>
 
 </body>
