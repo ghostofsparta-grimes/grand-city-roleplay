@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Grand City Roleplay</title>
@@ -61,49 +61,7 @@
     <p>Experience realistic roleplay in Grand City.</p>
   </div>
 
-  <div class="card">
-    <h3>Server Status</h3>
-
-    <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
-      <span id="status-dot"
-        style="width:10px;height:10px;border-radius:50%;background:#999;">
-      </span>
-      <span id="status-text">Checking server...</span>
-    </div>
-
-    <p id="players-text" style="margin-top:8px;opacity:0.8;">
-      Players: -- / --
-    </p>
-  </div>
-
 </div>
-
-<script>
-  const SERVER = "51.81.59.76:22365";
-  const API_URL = `https://samp-servers.net/api/?address=${SERVER}&format=json`;
-
-  fetch(API_URL)
-    .then(res => res.json())
-    .then(data => {
-      const dot = document.getElementById("status-dot");
-      const text = document.getElementById("status-text");
-      const players = document.getElementById("players-text");
-
-      if (data.online === "1") {
-        dot.style.background = "#22c55e";
-        text.textContent = "Server Online";
-        players.textContent = `Players: ${data.players} / ${data.maxplayers}`;
-      } else {
-        dot.style.background = "#ef4444";
-        text.textContent = "Server Offline";
-        players.textContent = "Players: 0 / 0";
-      }
-    })
-    .catch(() => {
-      document.getElementById("status-text").textContent =
-        "Status unavailable";
-    });
-</script>
 
 </body>
 </html>
